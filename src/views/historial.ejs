@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Cálculo de IMD</title>
+    <%- include('partials/head'); -%>
+        <script type="text/javascript" src="/funcionesHistorial.js"></script>
+</head>
+
+<body class="profile">
+    <p id="idEmail" style="display:none">
+        <%=user.local.email%>
+    </p>
+    <br>
+    <p id="idEmpresa" style="display:none">
+        <%=user.local.nombreempresa%>
+    </p>
+    <br>
+    <div class="container">
+        <header class="text-center">
+            <br>
+            <div class="p-3 bg-dark text-white rounded-3">
+                <h1>Bienvenido al cálculo de IMD</h1>
+                <h2>
+                    <%=user.local.email%>
+                </h2>
+                <h2>Empresa: <%=user.local.nombreempresa%>
+                </h2>
+                <br>
+            </div>
+            <br>
+            <a href="/profile" class="btn btn-dark btn-sm">
+                Inicio
+            </a>
+            <a href="/logout" class="btn btn-dark btn-sm">
+                Salir
+            </a>
+        </header>
+        <hr>
+        <div class="p-3 bg-dark text-white rounded-3">
+            <p>El índice de madurez digital (IMD) identifica la posición actual y futura de cada organización en la
+                evolución de
+                la digitalización. Al medir la madurez digital, las empresas están ahora mejor situadas para crear una
+                estrategia
+                de transformación digital.</p>
+            <p>Con este test te permitirá conocer a qué nivel ha estado llevando la transformación digital de su
+                empresa.
+                Responde a las siguientes preguntas, suma el total de tus resultados y ubica tu empresa en los
+                siguientes
+                niveles
+                de madurez digital de acuerdo a 5 dominios.</p>
+        </div>
+        <br>
+
+        <div id="contenido">
+
+        </div>
+        <br>
+    </div>
+    <script defer>
+        this.onload = renderizarPagina()
+    </script>
+</body>
+
+</html>

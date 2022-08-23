@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Cálculo de IMD</title>
+  <%- include('partials/head'); -%>
+    <script type="text/javascript" src="/funciones.js"></script>
+</head>
+
+<body class="profile">
+  <p style="display:none"><strong>Usuario</strong> :
+  <p id="idEmail" style="display:none">
+    <%=user.local.email%>
+  </p><br>
+  <p style="display:none"><strong>Empresa</strong> :
+    <p id="idEmpresa" style="display:none">
+      <%=user.local.nombreempresa%>
+    </p><br>
+  <div class="container">
+    <header class="text-center">
+      <br>
+      <div class="p-3 bg-dark text-white rounded-3">
+        <h1>Bienvenido al cálculo de IMD</h1>
+        <h2>
+          <%=user.local.email%>
+        </h2>
+        <h2>Empresa: <%=user.local.nombreempresa%>
+        </h2>
+        <br>
+      </div>
+      <br>
+      <a href="/historial" class="btn btn-dark btn-sm">
+        Historial
+      </a>
+      <a href="/logout" class="btn btn-dark btn-sm">
+        Salir
+      </a>
+    </header>
+    <hr>
+    <div class="p-3 bg-dark text-white rounded-3">
+      <p>El índice de madurez digital (IMD) identifica la posición actual y futura de cada organización en la
+        evolución de
+        la digitalización. Al medir la madurez digital, las empresas están ahora mejor situadas para crear una
+        estrategia
+        de transformación digital.</p>
+      <p>Con este test te permitirá conocer a qué nivel ha estado llevando la transformación digital de su
+        empresa.
+        Responde a las siguientes preguntas, suma el total de tus resultados y ubica tu empresa en los siguientes
+        niveles
+        de madurez digital de acuerdo a 5 dominios.</p>
+    </div>
+    <br>
+
+    <table class="table table-bordered table-dark table-hover">
+      <tr>
+        <th scope="col" style="text-align:center ">Cómo asignar valor a las preguntas</th>
+      </tr>
+      <tr>
+        <td scope="row">5 Puntos a TOTALMENTE DE ACUERDO</td>
+      </tr>
+      <tr>
+        <td scope="row">4 puntos a DE ACUERDO</td>
+      </tr>
+      <tr>
+        <td scope="row">3 puntos a NEUTRAL</td>
+      </tr>
+      <tr>
+        <td scope="row">2 puntos a EN DESACUERDO</td>
+      </tr>
+      <tr>
+        <td scope="row">1 puntos a TOTALMENTE EN DESACUERDO</td>
+      </tr>
+    </table>
+    <br>
+
+    <table id="D1" class="table table-bordered table-dark table-hover">
+      <tr>
+        <th scope="col" style="text-align:center ">Dominio 1: Estrategia y cultura digital</th>
+        <th scope="col" style="width:20%">De 5 a 1</th>
+      </tr>
+      <tr>
+        <td scope="row">1. ¿Ha implementado estrategias para lograr una transformación en las actividades de la empresa?
+        </td>
+        <td>
+          <select id="D1P1" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">2. ¿La empresa ha implementado en el último año alguna estrategia digital?</td>
+        <td>
+          <select id="D1P2" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">3. ¿Conoce las herramientas disponibles para implementar una estrategia digital?</td>
+        <td>
+          <select id="D1P3" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">4. ¿La empresa cuenta con objetivos de negocio claros asociados a la estrategia digital
+          establecida?</td>
+        <td>
+          <select id="D1P4" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">5. ¿Considera que la empresa apoya con recursos (económicos, humanos, materiales y tecnológicos)
+          las
+          estrategias digitales?</td>
+        <td>
+          <select id="D1P5" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">6. ¿Se mide el impacto de negocios producido por las iniciativas digitales llevadas a cabo?</td>
+        <td>
+          <select id="D1P6" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">7. ¿Los miembros de la empresa son alentados de forma activa a participar en la consecución de
+          la visión y
+          estrategia digital hecha por la empresa?</td>
+        <td>
+          <select id="D1P7" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">8. ¿La empresa cuenta con un plan de acción a largo plazo para llevar a cabo la transformación a
+          lo digital?
+        </td>
+        <td>
+          <select id="D1P8" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <table id="D2" class="table table-bordered table-dark table-hover">
+      <tr>
+        <th scope="col" style="text-align:center ">Dominio 2: Experiencia del cliente</th>
+        <th scope="col" style="width:20%">De 5 a 1</th>
+      </tr>
+      <tr>
+        <td scope="row">1.¿Es la empresa una organización centrada en el cliente (ellos son los guías en los procesos y
+          las decisiones)?</td>
+        <td>
+          <select id="D2P1" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">2. ¿La empresa obtiene información del comportamiento de sus clientes (pasados, actuales y
+          potenciales)?</td>
+        <td>
+          <select id="D2P2" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">3. ¿La empresa utiliza la información disponible para mejorar la experiencia del cliente?</td>
+        <td>
+          <select id="D2P3" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">4. ¿La empresa se apoya de medios digitales (como páginas web, aplicaciones, redes sociales,
+          sistemas informáticos (software)) para estar en contacto con los clientes?</td>
+        <td>
+          <select id="D2P4" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">5. ¿La empresa toma en cuenta los “puntos de contacto” (emai, teléfono, whatsapp, redes
+          sociales, entre otros) con sus clientes a la hora de mejorar la experiencia del cliente?</td>
+        <td>
+          <select id="D2P5" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <table id="D3" class="table table-bordered table-dark table-hover">
+      <tr>
+        <th scope="col" style="text-align:center ">Dominio 3: Habilitación de los empleados</th>
+        <th scope="col" style="width:20%">De 5 a 1</th>
+      </tr>
+      <tr>
+        <td scope="row">1.¿ Los trabajadores de la empresa cuentan con las habilidades para llevar a cabo la
+          transformación a lo digital?</td>
+        <td>
+          <select id="D3P1" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">2. ¿La empresa cuenta con programas de capacitación (para empleados en todos los niveles) en
+          temas específicos para lograr transformación a lo digital?</td>
+        <td>
+          <select id="D3P2" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">
+          3. ¿Al contratar personal se toma en cuenta las habilidades y conocimientos sobre el uso de tecnología de las
+          aspirantes?</td>
+        <td>
+          <select id="D3P3" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">4. ¿La empresa involucra a los trabajadores en el proceso de transformación a lo digital (nuevas
+          apps, nuevo software, nuevas aplicaciones)?</td>
+        <td>
+          <select id="D3P4" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">5. ¿Considera que los trabajadores de su empresa están preparados para adaptarse a los cambios
+          que se presentarán en el futuro digital y de negocios?</td>
+        <td>
+          <select id="D3P5" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <table id="D4" class="table table-bordered table-dark table-hover">
+      <tr>
+        <th scope="col" style="text-align:center ">Dominio 4: Productos, servicio y procesos</th>
+        <th scope="col" style="width:20%">De 5 a 1</th>
+      </tr>
+      <tr>
+        <td scope="row">1. ¿La empresa se ha adaptado y responde rápidamente a las nuevas tendencias del mercado y
+          exigencias de los clientes?</td>
+        <td>
+          <select id="D4P1" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">2. ¿La empresa ha implementado en el último año tecnologías para crear nuevos productos,
+          servicios o procesos, o mejorar los existentes?</td>
+        <td>
+          <select id="D4P2" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">3. ¿La empresa toma en cuenta la opinión del cliente para generar nuevos productos, servicios o
+          procesos, o mejorar los existentes?</td>
+        <td>
+          <select id="D4P3" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">4. ¿La digitalización y automatización de sus procesos ha impactado en incrementar ventas y/o
+          reducción de costos?</td>
+        <td>
+          <select id="D4P4" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">5. ¿El equipo directivo obtiene informes automatizados con los indicadores de desempeño clave
+          para dar seguimiento de los objetivos de negocio establecidos?</td>
+        <td>
+          <select id="D4P5" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <table id="D5" class="table table-bordered table-dark table-hover">
+      <tr>
+        <th scope="col" style="text-align:center ">Dominio 5: Infraestructura y tecnología</th>
+        <th scope="col" style="width:20%">De 5 a 1</th>
+      </tr>
+      <tr>
+        <td scope="row">1. ¿La empresa utiliza suficientes herramientas digitales para la gestión de su operación?</td>
+        <td>
+          <select id="D5P1" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">2. ¿Han implementado, en el último año, algún sistema informático de cualquier tipo para mejorar
+          procesos o servicios?</td>
+        <td>
+          <select id="D5P2" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">3. ¿La empresa en el último año ha implementado y aprovechado el uso de aplicaciones móviles
+          para facilitar sus actividades de trabajo y el proceso de compra de los clientes?</td>
+        <td>
+          <select id="D5P3" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">4. ¿La empresa utiliza la nube para optimizar sus operaciones?</td>
+        <td>
+          <select id="D5P4" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td scope="row">5. ¿La empresa analiza los datos generados por el negocio utilizando tecnologías para tomar
+          decisiones?</td>
+        <td>
+          <select id="D5P5" class="form-select" aria-label="Default select example">
+            <option selected>Seleccione un valor</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <div class="position-relative">
+      <button id="btnEv" class="btn btn-dark btn-lg position-absolute top-50 start-50 translate-middle"
+        onclick="evaluar()">
+        Evaluar
+      </button>
+    </div>
+    <br><br>
+
+    <div id="evaluacion"></div>
+    <br>
+  </div>
+</body>
+
+</html>
