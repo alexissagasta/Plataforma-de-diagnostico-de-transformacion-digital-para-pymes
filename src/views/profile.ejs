@@ -14,9 +14,9 @@
     <%=user.local.email%>
   </p><br>
   <p style="display:none"><strong>Empresa</strong> :
-    <p id="idEmpresa" style="display:none">
-      <%=user.local.nombreempresa%>
-    </p><br>
+  <p id="idEmpresa" style="display:none">
+    <%=user.local.nombreempresa%>
+  </p><br>
   <div class="container">
     <header class="text-center">
       <br>
@@ -510,7 +510,13 @@
 
     <div id="evaluacion"></div>
     <br>
+    <div id="divPDF" style="display:none" class="position-relative">
+      <button id="btnPDF" class="btn btn-dark btn-lg position-absolute top-50 start-50 translate-middle"
+        onclick="createPDF()">Descargar PDF</button>
+    </div>
+    <br>
   </div>
+  <br>
 </body>
 
 </html>
