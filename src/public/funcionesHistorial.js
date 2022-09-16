@@ -57,7 +57,7 @@ async function renderizarPagina() {
               `+ element.sumaDominio1 + `
             </td>
             <td>
-              30%
+            `+ element.porcentajeDominio1 + "%"+ `
             </td>
             <td id="pd1" colspan="2">
               `+ element.puntosDominio1 + `
@@ -71,7 +71,7 @@ async function renderizarPagina() {
               `+ element.sumaDominio2 + `
             </td>
             <td>
-              25%
+            `+ element.porcentajeDominio2 + "%"+ `
             </td>
             <td id="pd2" colspan="2">
               `+ element.puntosDominio2 + `
@@ -85,7 +85,7 @@ async function renderizarPagina() {
               `+ element.sumaDominio3 + `
             </td>
             <td>
-              15%
+            `+ element.porcentajeDominio3 + "%"+ `
             </td>
             <td id="pd3" colspan="2">
               `+ element.puntosDominio3 + `
@@ -99,7 +99,7 @@ async function renderizarPagina() {
               `+ element.sumaDominio4 + `
             </td>
             <td>
-              15%
+            `+ element.porcentajeDominio4 + "%"+ `
             </td>
             <td id="pd4" colspan="2">
               `+ element.puntosDominio4 + `
@@ -113,7 +113,7 @@ async function renderizarPagina() {
               `+ element.sumaDominio5 + `
             </td>
             <td>
-              15%
+            `+ element.porcentajeDominio5 + "%"+`
             </td>
             <td id="pd5" colspan="2">
               `+ element.puntosDominio5 + `

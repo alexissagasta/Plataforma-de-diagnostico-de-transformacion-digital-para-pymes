@@ -131,16 +131,30 @@ async function guardarEvaluacion(evaluacion) {
   console.log(JSON.stringify(evaluacion));
 }
 
+async function obtenerPorcentajesEv() {
+  const response = await fetch("/obtenerPorcentajesEv", {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json'
+      // 'Content-Type': 'application/x-www-form-urlencoded',
+    }
+  })
+  const data = await response.json();
+  return data
+}
+
 async function evaluar() {
 
   let respuestas = obtenerRespuestas()
+  let porcentajesDom = await obtenerPorcentajesEv()
+  console.log(porcentajesDom)
   const evaluacion = document.getElementById('ev');
 
-  let puntosD1 = (respuestas[0] * 30) / 40
-  let puntosD2 = (respuestas[1] * 25) / 25
-  let puntosD3 = (respuestas[2] * 15) / 25
-  let puntosD4 = (respuestas[3] * 15) / 25
-  let puntosD5 = (respuestas[4] * 15) / 25
+  let puntosD1 = (respuestas[0] * porcentajesDom[0].porcentajeD1) / 40
+  let puntosD2 = (respuestas[1] * porcentajesDom[0].porcentajeD2) / 25
+  let puntosD3 = (respuestas[2] * porcentajesDom[0].porcentajeD3) / 25
+  let puntosD4 = (respuestas[3] * porcentajesDom[0].porcentajeD4) / 25
+  let puntosD5 = (respuestas[4] * porcentajesDom[0].porcentajeD5) / 25
   let IMD = puntosD1 + puntosD2 + puntosD3 + puntosD4 + puntosD5
   let nivel = calcularNivel(IMD)
   let emailRaw = document.getElementById('idEmail').textContent;
@@ -172,7 +186,7 @@ async function evaluar() {
               `+ respuestas[0] + `
             </td>
             <td>
-              30%
+            `+ porcentajesDom[0].porcentajeD1 + "%" + `
             </td>
             <td id="pd1" colspan="2">
               `+ puntosD1 + `
@@ -186,7 +200,7 @@ async function evaluar() {
               `+ respuestas[1] + `
             </td>
             <td>
-              25%
+            `+ porcentajesDom[0].porcentajeD2 + "%" + `
             </td>
             <td id="pd2" colspan="2">
               `+ puntosD2 + `
@@ -200,7 +214,7 @@ async function evaluar() {
               `+ respuestas[2] + `
             </td>
             <td>
-              15%
+            `+ porcentajesDom[0].porcentajeD3 + "%" + `
             </td>
             <td id="pd3" colspan="2">
               `+ puntosD3 + `
@@ -214,7 +228,7 @@ async function evaluar() {
               `+ respuestas[3] + `
             </td>
             <td>
-              15%
+            `+ porcentajesDom[0].porcentajeD4 + "%" + `
             </td>
             <td id="pd4" colspan="2">
               `+ puntosD4 + `
@@ -228,7 +242,7 @@ async function evaluar() {
               `+ respuestas[4] + `
             </td>
             <td>
-              15%
+            `+ porcentajesDom[0].porcentajeD5 + "%" + `
             </td>
             <td id="pd5" colspan="2">
               `+ puntosD5 + `
@@ -292,12 +306,17 @@ async function evaluar() {
       "puntosDominio3": puntosD3,
       "puntosDominio4": puntosD4,
       "puntosDominio5": puntosD5,
+      "porcentajeDominio1": porcentajesDom[0].porcentajeD1,
+      "porcentajeDominio2": porcentajesDom[0].porcentajeD2,
+      "porcentajeDominio3": porcentajesDom[0].porcentajeD3,
+      "porcentajeDominio4": porcentajesDom[0].porcentajeD4,
+      "porcentajeDominio5": porcentajesDom[0].porcentajeD5,
       "imd": IMD,
       "nivel": nivel.nivel,
       "descripcion": nivel.descripcion,
       "rango": (nivel.nivel + ": " + nivel.rango)
     }
-    document.getElementById('divPDF').style.display  = 'block';
+    document.getElementById('divPDF').style.display = 'block';
     console.log(evaluacion)
     await guardarEvaluacion(evaluacion);
   } else {
@@ -356,12 +375,17 @@ async function evaluar() {
         "puntosDominio3": puntosD3,
         "puntosDominio4": puntosD4,
         "puntosDominio5": puntosD5,
+        "porcentajeDominio1": porcentajesDom[0].porcentajeD1,
+        "porcentajeDominio2": porcentajesDom[0].porcentajeD2,
+        "porcentajeDominio3": porcentajesDom[0].porcentajeD3,
+        "porcentajeDominio4": porcentajesDom[0].porcentajeD4,
+        "porcentajeDominio5": porcentajesDom[0].porcentajeD5,
         "imd": IMD,
         "nivel": nivel.nivel,
         "descripcion": nivel.descripcion,
         "rango": (nivel.nivel + ": " + nivel.rango)
       }
-      await guardarEvaluacion(evaluacion); 
+      await guardarEvaluacion(evaluacion);
     }
   }
 }
@@ -370,7 +394,7 @@ async function createPDF() {
   let empresa = empresaRaw.replace(/\s+/g, '');
   var sTable = document.getElementById('ev').innerHTML;
   var sDesc = document.getElementById('desc').innerHTML;
-  
+
   var style = "<style>";
   style = style + "table {width: 100%;font: 17px Calibri;}";
   style = style + "table, th, td {border: solid 1px #DDD; border-collapse: collapse;";
@@ -381,7 +405,7 @@ async function createPDF() {
   var win = window.open('', '', 'height=700,width=700');
 
   win.document.write('<html><head>');
-  win.document.write('<h1 style="text-align: center;">'+empresa+'</h1>');
+  win.document.write('<h1 style="text-align: center;">' + empresa + '</h1>');
   win.document.write('<title>Calculo</title>');   // <title> FOR PDF HEADER.
   win.document.write(style);          // ADD STYLE INSIDE THE HEAD TAG.
   win.document.write('</head>');

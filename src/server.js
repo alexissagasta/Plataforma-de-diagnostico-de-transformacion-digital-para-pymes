@@ -10,6 +10,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const ruteadorEvaluacion = require("./app/rutaEvaluaciones.js");
+const ruteadorConfiguracion = require("./app/rutaConfiguraciones.js");
 
 const { url } = require('./config/database.js');
 
@@ -37,6 +38,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use("/", ruteadorEvaluacion);
+app.use("/", ruteadorConfiguracion);
 
 // routes
 require('./app/routes.js')(app, passport);

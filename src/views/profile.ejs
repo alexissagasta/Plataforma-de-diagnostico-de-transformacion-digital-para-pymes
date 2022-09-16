@@ -30,10 +30,15 @@
         <br>
       </div>
       <br>
-      <a href="/historial" class="btn btn-dark btn-sm">
+      <a href="/historial" class="btn btn-dark btn-lg">
         Historial
       </a>
-      <a href="/logout" class="btn btn-dark btn-sm">
+      <% if(user.local.admin == true) {%>
+      <a id="configBtn" href="/configuracion" class="btn btn-dark btn-lg">
+        Configuracion
+      </a>
+      <% } %>
+      <a href="/logout" class="btn btn-dark btn-lg">
         Salir
       </a>
     </header>

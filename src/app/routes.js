@@ -53,6 +53,14 @@ module.exports = (app, passport) => {
 
 	});
 
+	//configuracion view
+	app.get('/configuracion', isLoggedIn, (req, res) => {
+		res.render('configuracion', {
+			user: req.user
+		});
+
+	});
+
 	
 };
 

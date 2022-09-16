@@ -5,7 +5,8 @@ const userSchema = new mongoose.Schema({
   local: {
     email: String,
     password: String,
-    nombreempresa: String
+    nombreempresa: String,
+    admin: Boolean
   },
   facebook: {
     id: String,

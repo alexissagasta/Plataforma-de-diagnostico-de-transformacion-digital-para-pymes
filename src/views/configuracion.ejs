@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <title>Cálculo de IMD</title>
     <%- include('partials/head'); -%>
-        <script type="text/javascript" src="/funcionesHistorial.js"></script>
+        <script type="text/javascript" src="/funcionesConfiguracion.js"></script>
 </head>
 
 <body class="profile">
@@ -33,30 +33,14 @@
             <a href="/profile" class="btn btn-dark btn-lg">
                 Inicio
             </a>
-            <% if(user.local.admin==true) {%>
-                <a id="configBtn" href="/configuracion" class="btn btn-dark btn-lg">
-                    Configuracion
-                </a>
-                <% } %>
+            <a href="/historial" class="btn btn-dark btn-lg">
+                Historial
+              </a>
             <a href="/logout" class="btn btn-dark btn-lg">
                 Salir
             </a>
         </header>
         <hr>
-        <div class="p-3 bg-dark text-white rounded-3">
-            <p>El índice de madurez digital (IMD) identifica la posición actual y futura de cada organización en la
-                evolución de
-                la digitalización. Al medir la madurez digital, las empresas están ahora mejor situadas para crear una
-                estrategia
-                de transformación digital.</p>
-            <p>Con este test te permitirá conocer a qué nivel ha estado llevando la transformación digital de su
-                empresa.
-                Responde a las siguientes preguntas, suma el total de tus resultados y ubica tu empresa en los
-                siguientes
-                niveles
-                de madurez digital de acuerdo a 5 dominios.</p>
-        </div>
-        <br>
 
         <div id="contenido">
 
